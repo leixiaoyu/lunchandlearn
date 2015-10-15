@@ -1,0 +1,10 @@
+branch-defaults:
+  master:
+    environment: lunchAndLearn-dev
+global:
+  application_name: lunch-and-learn
+  default_ec2_keyname: null
+  default_platform: 64bit Amazon Linux 2015.03 v2.0.1 running Node.js
+  default_region: us-west-2
+  profile: eb-cli
+  sc: git
