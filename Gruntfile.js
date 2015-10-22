@@ -1,15 +1,22 @@
 module.exports = function(grunt) {
+  var guid = function() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random()*16|0,v=c=='x'?r:r&0x3|0x8;return v.toString(16);
+    });
+  };
+
   grunt.initConfig({
+    guid: guid(),
     awsebtdeploy: {
       options: {
         // Task-specific options go here.
         "applicationName": "lunch-and-learn",
         "environmentCNAME": "lunchandlearn-dev.elasticbeanstalk.com",
         "region": "us-west-2",
-        "sourceBundle": "./archive.zip",
+        "sourceBundle": "./<%= guid %>.zip",
         "accessKeyId": "AKIAJDBHT67PW3SM6JHA",
-        "secretAccessKey": "",
-        "healthPage": "http://lunchandlearn-dev.elasticbeanstalk.com/"
+        "secretAccessKey": "vRiipIwR2Y0DfkJJI3JdcMOS8JAbZtt7t6poV2Ht",
+        "healthPage": "http://lunchandlearn-dev.elasticbeanstalk.com/",
         "s3": {
           "bucket": "elasticbeanstalk-us-west-2-427262291085",
           "key": "lunch-and-learn"
@@ -37,7 +44,7 @@ module.exports = function(grunt) {
     compress: {
       main: {
         options: {
-          archive: 'archive.zip'
+          archive:  '<%= guid %>.zip'
         },
         files: [
           { src: ['**'], dest: '/', filter: 'isFile' }
