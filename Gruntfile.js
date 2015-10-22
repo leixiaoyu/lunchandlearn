@@ -8,8 +8,8 @@ module.exports = function(grunt) {
         "region": "us-west-2",
         "sourceBundle": "./archive.zip",
         "accessKeyId": "AKIAJDBHT67PW3SM6JHA",
-        "secretAccessKey": "http://lunchandlearn-dev.elasticbeanstalk.com/",
-        "healthPage": "healthPage"
+        "secretAccessKey": "",
+        "healthPage": "http://lunchandlearn-dev.elasticbeanstalk.com/"
         "s3": {
           "bucket": "elasticbeanstalk-us-west-2-427262291085",
           "key": "lunch-and-learn"
