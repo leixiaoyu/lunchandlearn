@@ -14,8 +14,6 @@ module.exports = function(grunt) {
         "environmentCNAME": "lunchandlearn-dev.elasticbeanstalk.com",
         "region": "us-west-2",
         "sourceBundle": "./<%= guid %>.zip",
-        "accessKeyId": "AKIAJDBHT67PW3SM6JHA",
-        "secretAccessKey": "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",
         "healthPage": "http://lunchandlearn-dev.elasticbeanstalk.com/",
         "s3": {
           "bucket": "elasticbeanstalk-us-west-2-427262291085",
