@@ -7,6 +7,9 @@ var mongoose = require('mongoose');
 module.exports = mongoose.model('Topic', {
     name : {type : String, default: ''},
     description : {type : String, default: ''},
+    notes : {type: String, default: ''}
     vote : {type : Number, default: 0},
-    owner : {type : String, default: ''}
+    owner : {type : String, default: ''},
+    scheduledDate : {type: Date, default: '1970-01-01T00:00:01:000Z'},
+    isCurrent : {type: Boolean, default: false}
 });

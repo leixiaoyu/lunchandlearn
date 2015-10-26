@@ -56,6 +56,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-awsebtdeploy');
 
-  grunt.registerTask('default', ['jshint', 'compress']);
+  grunt.registerTask('default', ['jshint']);
   grunt.registerTask('deploy', ['compress', 'awsebtdeploy']);
 };
