@@ -1,1 +1,1 @@
-Lunch and Learn application build to try out NodeJs on AWS EBS.
+Lunch and Learn application built to try out NodeJs on AWS EB.
