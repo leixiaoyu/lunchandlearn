@@ -16,19 +16,20 @@ module.controller('MainController', ['$scope', '$state', 'auth', 'store', 'Topic
         // Error callback
         console.log(error);
       });
-    }
+    };
 
     $scope.logout = function() {
       auth.signout();
       store.remove('profile');
       store.remove('token');
-    }
+      $state.go('logout');
+    };
 
     $scope.isLogin = function() {
       var profile = store.get('profile');
       var token = store.get('token');
       return profile && token;
-    }
+    };
 
     TopicService.GetCurrentTopic().then(function(response) {
       $scope.topic = response;
@@ -38,5 +39,13 @@ module.controller('MainController', ['$scope', '$state', 'auth', 'store', 'Topic
 ]);
 
 module.controller('ProposedController', function($scope) {
+
+});
+
+module.controller('LoginController', function($scope) {
+
+});
+
+module.controller('LogoutController', function($scope) {
 
 });
