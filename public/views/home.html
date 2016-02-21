@@ -1,9 +1,18 @@
 <div class="jumbotron">
-	<h2>Current topic</h2>
-	<p>{{topic.name}}</p>
+  <h1>Are you lost?</h1>
+  <p>No worries. We can help you to find your way again.</p>
 </div>
-<div class="panel panel-default">
-	<div class="panel-body">
-		<dive btf-markdown="topic.description"></div>
-	</div>
+<div class="list-group">
+  <a href="#" class="list-group-item" ng-click="viewCurrentTopic()">
+    <h4 class="list-group-item-heading">Current Topic</h4>
+    <p class="list-group-item-text">To see what the current topic is</p>
+  </a>
+  <a href="#" class="list-group-item disabled">
+    <h4 class="list-group-item-heading">Proposed Topic</h4>
+    <p class="list-group-item-text">To see future topic candidates or propose a topic that interests you</p>
+  </a>
+  <a href="#" class="list-group-item disabled">
+    <h4 class="list-group-item-heading">All Topic</h4>
+    <p class="list-group-item-text">To see all topics and their notes</p>
+  </a>
 </div>

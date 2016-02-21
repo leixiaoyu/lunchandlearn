@@ -55,13 +55,13 @@ app.config(function(authProvider, $routeProvider, $httpProvider, jwtInterceptorP
 app.config(['$stateProvider', '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
     // for any unmatched url, redirect to state "/"
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
       .state('/', {
         url: '/',
-        templateUrl: '/views/home.html',
-        controller: 'MainController'
+        templateUrl: 'views/home.html',
+        controller: 'HomeController'
       })
       .state('logout', {
         url: '/logout',
@@ -73,10 +73,15 @@ app.config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'views/login.html',
         controller: 'LoginController'
       })
+      .state('current', {
+        url: '/current',
+        templateUrl: '/views/current.html',
+        controller: 'CurrentTopicController'
+      })
       .state('proposed', {
         url: '/proposed',
         templateUrl: '/views/proposed.html',
-        controller: 'ProposedController'
+        controller: 'ProposedTopicController'
       });
   }
 ]);

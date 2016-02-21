@@ -11,7 +11,7 @@ module.controller('MainController', ['$scope', '$state', 'auth', 'store', 'Topic
         store.set('token', token);
 
         $scope.user = profile;
-        $state.go('/');
+        $state.go('current');
       }, function(error) {
         // Error callback
         console.log(error);
@@ -31,14 +31,29 @@ module.controller('MainController', ['$scope', '$state', 'auth', 'store', 'Topic
       return profile && token;
     };
 
-    TopicService.GetCurrentTopic().then(function(response) {
-      $scope.topic = response;
-    });
-
+    $scope.goToHome = function() {
+      $state.go('/');
+    };
   }
 ]);
 
-module.controller('ProposedController', function($scope) {
+module.controller('HomeController', ['$scope', '$state',
+  function($scope, $state) {
+    $scope.viewCurrentTopic = function() {
+      $state.go('current');
+    };
+  }
+]);
+
+module.controller('CurrentTopicController', ['$scope', 'TopicService',
+  function($scope, TopicService) {
+    TopicService.GetCurrentTopic().then(function(response) {
+      $scope.topic = response;
+    });
+  }
+]);
+
+module.controller('ProposedTopicController', function($scope) {
 
 });
 
