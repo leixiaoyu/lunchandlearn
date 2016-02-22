@@ -16,9 +16,13 @@ modelFactory.factory('TopicModelFactory', ['$http', function($http) {
       return $http.post(API_PREFIX + '/topics', topic);
     },
 
+    update : function(id, topic) {
+      return $http.put(API_PREFIX + '/topic/' + id, topic);
+    },
+
     // call to DELETE a topic
     delete : function(id) {
-      return $http.delete(API_PREFIX + '/topics/' + id);
+      return $http.delete(API_PREFIX + '/topic/' + id);
     }
   };
 }]);

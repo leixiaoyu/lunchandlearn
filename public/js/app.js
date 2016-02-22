@@ -5,6 +5,7 @@ var app = angular.module('LunchAndLearnApp', [
   'ngRoute',
   'ngSanitize',
   'ui.router',
+  'ui.bootstrap',
   'btford.markdown',
   'AppController',
   'ModelFactory']);
@@ -34,7 +35,7 @@ app.config(function(authProvider, $routeProvider, $httpProvider, jwtInterceptorP
   auth.hookEvents();
 
   // Keep user session even when user refresh page
-  $rootScope.$on('$locationChangeStart', function() {
+  $rootScope.$on('$stateChangeStart', function() {
     var token = store.get('token');
     if (token) {
       if (!jwtHelper.isTokenExpired(token)) {
@@ -45,7 +46,7 @@ app.config(function(authProvider, $routeProvider, $httpProvider, jwtInterceptorP
         }
       } else {
         // Either show the login page or use the refresh token to get a new idToken
-        $state.go('/');
+        $state.go('login');
       }
     }
   });
@@ -55,7 +56,7 @@ app.config(function(authProvider, $routeProvider, $httpProvider, jwtInterceptorP
 app.config(['$stateProvider', '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
     // for any unmatched url, redirect to state "/"
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('login');
 
     $stateProvider
       .state('/', {

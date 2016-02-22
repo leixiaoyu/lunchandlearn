@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h3 class="modal-title">Topic Editor</h3>
+</div>
+<div class="modal-body">
+  <h4>Topic Name</h4>
+  <input type="text"
+         class="form-control"
+         ng-model="topic.name"
+         placeholder="Topic name goes here..."
+         aria-describedby="sizing-topic-name" />
+  <h4>Topic Description</h4>
+  <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">
+    Markdown Syntax Reference
+  </a>
+  <textarea type="text"
+            rows="5"
+            class="form-control"
+            ng-model="topic.description"
+            placeholder="Topic description goes here... Markdown format supported.">
+  </textarea>
+  <div class="row" style="padding-left: 20px; padding-top: 15px;">
+    <input type="checkbox" ng-model="previewEnabled" />
+    Preview topic description?
+  </div>
+  <div class="row" style="padding-left: 20px; padding-top: 15px; padding-right: 20px;" ng-if="previewEnabled">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div btf-markdown="topic.description"></div>
+      </div>
+    </dive>
+  </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

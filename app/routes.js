@@ -36,8 +36,19 @@ module.exports = function(app) {
     });
   });
 
+  // route to handle updating goes here (app.put)
+  app.put(API_PREFIX + '/topic/:topic_id', function(req, res) {
+    Topic.findByIdAndUpdate(req.params.topic_id, req.body, function(err, topic) {
+      if (err) {
+        res.send(err);
+      }
+
+      res.json(topic);
+    });
+  });
+
   // route to handle delete goes here (app.delete)
-  app.delete(API_PREFIX + '/topics/:topic_id', function(req, res) {
+  app.delete(API_PREFIX + '/topic/:topic_id', function(req, res) {
     Topic.findByIdAndRemove(req.params.topic_id, function(err, topic) {
       if (err) {
         res.send(err);

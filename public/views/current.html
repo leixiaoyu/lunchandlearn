@@ -1,9 +1,13 @@
 <div class="jumbotron">
 	<h2>Current topic</h2>
 	<p>{{topic.name}}</p>
+	<p>
+		<a class="btn btn-primary btn-sm" href="#" role="button" ng-click="addNotes()">Add Notes</a>
+		<a class="btn btn-primary btn-sm" href="#" role="button" ng-click="editTopic()">Edit Topic</a>
+	</p>
 </div>
 <div class="panel panel-default">
 	<div class="panel-body">
-		<dive btf-markdown="topic.description"></div>
+		<div btf-markdown="topic.description"></div>
 	</div>
 </div>

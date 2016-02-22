@@ -45,16 +45,50 @@ module.controller('HomeController', ['$scope', '$state',
   }
 ]);
 
-module.controller('CurrentTopicController', ['$scope', 'TopicService',
-  function($scope, TopicService) {
+module.controller('CurrentTopicController', ['$scope', '$uibModal', 'TopicService',
+  function($scope, $uibModal, TopicService) {
     TopicService.GetCurrentTopic().then(function(response) {
       $scope.topic = response;
     });
+
+    $scope.editTopic = function() {
+      var modalInstance = $uibModal.open({
+        templateUrl: 'views/modal_topic_manager.html',
+        controller: 'TopicManagerModalController',
+        size: 'lg',
+        resolve: {
+          topic: function() {
+            return $scope.topic;
+          }
+        }
+      });
+
+      modalInstance.result.then(function(topic) {
+        $scope.topic = topic;
+      }, function () {
+        console.log('Modal dismissed at: ' + new Date());
+      });
+    }
   }
 ]);
 
 module.controller('ProposedTopicController', function($scope) {
 
+});
+
+module.controller('TopicManagerModalController',
+function($scope, $uibModalInstance, topic, TopicService) {
+  $scope.topic = topic;
+
+  $scope.save = function() {
+    TopicService.UpdateTopic($scope.topic).then(function(topic) {
+      $uibModalInstance.close(topic);
+    });
+  };
+
+  $scope.cancel = function() {
+    $uibModalInstance.dismiss();
+  };
 });
 
 module.controller('LoginController', function($scope) {
